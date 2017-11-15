@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="col s12 m7">
+    <h2 class="header">Horizontal Card</h2>
+    <div class="card horizontal large">
+      <div class="teal lighten-2" style="width: 30%">
+                    {{ product.name }}
+            {{ product.size }}
+            {{ product.price }}
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+            {% include 'order_form.html' %}
+        </div>
+        <div class="card-action">
+          <a href="#">Naroči</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{#    <div class="row">#}
+{#        <div class="col s12 m4">#}
+{#            {{ product.name }}#}
+{#            {{ product.size }}#}
+{#            {{ product.price }}#}
+{#        </div>#}
+{#        <div class="col s12 m8">#}
+{#            {% include 'order_form.html' %}#}
+{#        </div>#}
+{#    </div>#}
+{% endblock %}

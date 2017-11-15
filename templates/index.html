@@ -50,7 +50,7 @@
                 Cena: {{ product.price }}
             </div>
             <div class="card-action">
-              <a class="waves-effect waves-light btn modal-trigger" href="#modal-order">Naroči</a>
+              <a href="{% url 'products' pk=product.id %}">Naroči</a>
             </div>
           </div>
         </div>
