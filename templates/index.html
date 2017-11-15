@@ -31,7 +31,9 @@
                 }
             );
 
-            $('.modal').modal();
+            $(document).ready(function(){
+                $('.materialboxed').materialbox();
+            });
         });
     </script>
 {% endblock %}
@@ -42,7 +44,7 @@
         <div class="col s12 m4 l3">
           <div class="card small" style="position: relative">
             <div class="card-image">
-              <img src="{{ product.img.url }}">
+              <img class="materialboxed" src="{{ product.img.url }}">
               <span class="card-title">{{ product.name }}</span>
             </div>
             <div class="card-content" style="position: absolute; bottom: 20px;">

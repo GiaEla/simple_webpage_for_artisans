@@ -1,12 +1,14 @@
+{#<div>#}
+{#    {{ form.errors }}#}
+{#</div>#}
 <form method="POST" class="post-form">
-
 {% csrf_token %}
 
     <div class="input-field">
-{#     not workign   <i class="material-icons prefix">mail_outline</i>#}
-        <input id="email" type="email" class="validate">
-        <label for="icon_prefix">Email</label>
+        {{ form.email }}
+        <label for="email">Email</label>
+        <span class="red">{{ form.errors.email.0 }}</span>
     </div>
-    <a class="waves-effect waves-light btn"> Naroči </a>
 
+    <button type="submit" class="waves-effect waves-light btn"> Naroči </button>
 </form>

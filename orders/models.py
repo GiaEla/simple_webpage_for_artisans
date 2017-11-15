@@ -1,7 +1,9 @@
 from django.db import models
+from django.utils.safestring import mark_safe
+
+from moneytalks import settings
 
 
-# Create your models here.
 class Product(models.Model):
     name = models.CharField('Ime izdelka', max_length=40)
     img = models.ImageField('Fotografija')
@@ -9,6 +11,26 @@ class Product(models.Model):
     price = models.DecimalField('Cena v €',  max_digits=8, decimal_places=2)
     sold = models.BooleanField('Prodano', default=False)
 
+    def image_tag(self):
+        return mark_safe('<img src="{0}" style="width:auto; height:200px;" />'.format(settings.MEDIA_URL + str(self.img)))
+
     class Meta:
         verbose_name = 'Izdelek'
         verbose_name_plural = 'Izdelki'
+
+    def __unicode__(self):
+        return '%s' % (self.name)
+
+    def __str__(self):
+        return '%s' % (self.name)
+
+
+class Order(models.Model):
+    recipient_email = models.CharField('Email naročnika', max_length=260)
+    product_fk = models.ForeignKey(Product, verbose_name="Za izdelek:")
+    status = models.CharField('Status naročila', max_length=50)
+    date = models.DateTimeField("Čas prejema naročila", null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'naročilo'
+        verbose_name_plural = 'naročila'
