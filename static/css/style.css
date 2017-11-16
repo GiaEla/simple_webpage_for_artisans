@@ -35,3 +35,30 @@ main {
 .all_logos{
     margin-top: 3%;
 }
+
+.not-streched{
+    width: 150px;
+    height: 150px;
+    background-image: url("/static/img/moi.JPG");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.card-margin{
+    margin: 20px;
+}
+
+#success-card{
+    padding: 50px 50px 25px 50px;
+    margin-top: 10%;
+}
+
+.right{
+    float: right;
+}
+
+.success-button{
+    margin-top: 25px;
+    float: right;
+}

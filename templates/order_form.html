@@ -10,5 +10,10 @@
         <span class="red">{{ form.errors.email.0 }}</span>
     </div>
 
-    <button type="submit" class="waves-effect waves-light btn"> Naroči </button>
+        <div class="input-field">
+        {{ form.comment }}
+        <label for="comment">Opombe</label>
+    </div>
+    <button type="submit" class="waves-effect waves-light btn hoverable right"> Naroči </button>
 </form>
+<a href="/"><button class="waves-effect waves-light btn hoverable float-left"> Nazaj </button></a>

@@ -10,6 +10,7 @@ def create_order(form, product_pk):
     order = Order()
     order.date = datetime.datetime.now()
     order.recipient_email = form.cleaned_data['email']
+    order.comment = form.cleaned_data['comment']
     order.product_fk = Product.objects.get(id=product_pk)
     order.status = "Naročilo prejeto"
 

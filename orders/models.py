@@ -11,7 +11,7 @@ class Product(models.Model):
     price = models.DecimalField('Cena v €',  max_digits=8, decimal_places=2)
     sold = models.BooleanField('Prodano', default=False)
 
-    def image_tag(self):
+    def fotografija(self):
         return mark_safe('<img src="{0}" style="width:auto; height:200px;" />'.format(settings.MEDIA_URL + str(self.img)))
 
     class Meta:
@@ -30,6 +30,12 @@ class Order(models.Model):
     product_fk = models.ForeignKey(Product, verbose_name="Za izdelek:")
     status = models.CharField('Status naročila', max_length=50)
     date = models.DateTimeField("Čas prejema naročila", null=True, blank=True)
+    quantity = models.PositiveSmallIntegerField('Količina', default=1)
+    comment = models.CharField('Opomba', max_length=500)
+
+    def izdelek(self):
+        return mark_safe('<img src="{0}" style="width:auto; height:200px;" />'.format(settings.MEDIA_URL + str(self.product_fk.img)))
+
 
     class Meta:
         verbose_name = 'naročilo'

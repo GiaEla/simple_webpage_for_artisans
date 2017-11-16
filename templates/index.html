@@ -11,26 +11,37 @@
 
 
 {% block header %}
-    <div class="wrap">
-    <div class="slider" id="home">
-        <ul class="slides">
-            {% for product in last_products %}
-                <li>
-                    <img src="{{ product.img.url }}">
-                    <div class="caption center-align">
-                        <h2>{{ product.name }}</h2>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#products">Izdelki</a></li>
+                    <li><a href="#about">O meni</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
+    <div class="wrap">
+        <div class="slider" id="home">
+            <ul class="slides">
+                {% for product in last_products %}
+                    <li>
+                        <img src="{{ product.img.url }}">
+                        <div class="caption center-align">
+                            <h2>{{ product.name }}</h2>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     <script>
         $(document).ready(function(){
             $('.slider').slider(
                 {
-                    interval: 50000,
-                    height: 400,
+                    interval: 3000
                 }
             );
 
@@ -44,24 +55,48 @@
 {% block content %}
     <!-- products section -->
     <div class="row section scrollspy" id="products">
-    {% for product in all_products %}
-        <div class="col s12 m4 l3">
-          <div class="card small">
-            <div class="card-image">
-              <img class="" src="{{ product.img.url }}">
-              <span class="card-title">{{ product.name }}</span>
+        {% for product in all_products %}
+            <div class="col s12 m4 l3">
+            <a href="{% url 'products' pk=product.id %}">
+                <div class="card small hoverable">
+                    <div class="card-image">
+                        <img class="" src="{{ product.img.url }}">
+                        <span class="card-title">{{ product.name }}</span>
+                    </div>
+                    <div class="card-content">
+                        Velikost: {{ product.size }} <br>
+                        Cena: {{ product.price }}
+                    </div>
+                    <div class="card-action">
+                        Naroči
+                    </div>
+
+                </div>
+                </a>
             </div>
-            <div class="card-content">
-                Velikost: {{ product.size }} <br>
-                Cena: {{ product.price }}
-            </div>
-            <div class="card-action">
-              <a href="{% url 'products' pk=product.id %}">Naroči</a>
-            </div>
-          </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
     </div>
+
+    <!-- about me section -->
+    <div class="row section scrollspy" id="about">
+    <div>
+        <div class="card-panel grey lighten-5 z-depth-1">
+            <div class="row valign-wrapper">
+                <div class="col s2">
+                    <div class="circle not-streched">
+                    </div>
+                </div>
+                <div class="col s10">
+                  <span class="black-text">
+                    Sed tincidunt dolor vel turpis sodales lobortis. Integer cursus ante ut sapien aliquet maximus. Donec eu ultrices est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit enim vehicula metus bibendum volutpat. Phasellus risus ligula, ornare nec justo ut, vestibulum porttitor enim. Ut sagittis nibh augue, ac efficitur arcu commodo sed. Mauris ut metus orci. Donec laoreet magna hendrerit, venenatis est at, ornare elit. Donec ac nibh ultricies, viverra tortor non, porta ipsum. Nam sodales tempus elit vel ultricies. Phasellus viverra blandit velit, vel feugiat nunc facilisis in.
+                    Quisque eget neque a dui mattis pellentesque. Donec eu lacinia mauris. Sed mattis risus et imperdiet ultricies. Sed enim tortor, tincidunt quis magna ut, lacinia volutpat nulla. Donec vitae augue erat. Nullam congue quis sem id consectetur. Phasellus vitae iaculis ipsum, id egestas libero. Donec dignissim nec nibh nec imperdiet. Nulla ut nisi diam.
+                    Nam non vulputate quam. Pellentesque ac molestie est. Curabitur congue id lacus at feugiat. In gravida dolor lorem, non efficitur ipsum dignissim sit amet. Pellentesque cursus augue erat, nec pretium massa convallis nec. Nullam hendrerit felis sem, sed tempor sem cursus et. Donec ultrices bibendum tempus. Donec sollicitudin porttitor dolor, tempus sodales felis aliquam nec. Suspendisse pretium, turpis quis efficitur ornare, nunc elit scelerisque justo, id vestibulum dui sem at ligula.
+                  </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
 
 {% block footer %}
@@ -69,7 +104,7 @@
         <div class="row scrollspy" id="contact">
             <div class="col l6 m6 s10 offset-s1">
                 <h5 class="white-text">Kontakt</h5>
-                                <ul>
+                <ul>
                     <li> Email: spela.giacomelli@gmail.com </li>
                     <li> Naslov: Kaj te briga, 1000 Ljubljana </li>
                 </ul>
