@@ -10,27 +10,49 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 
 <body>
-    <div class="">
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#products">Izdelki</a></li>
+                    <li><a href="#about">O meni</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <header>
         {% block header %}
         {% endblock %}
-    </div>
+    </header>
 
-    <div class="container">
+    <main class="container">
         {% block content %}
         {% endblock %}
-    </div>
+    </main>
 
-     <footer>
-        <div class="row">
-            <div class="col-lg-12" style="position: fixed; bottom: 0; width: 100%;">
-                <p>Copyright &copy; Giacomelli </p>
+        <footer class="page-footer">
+            {% block footer %}
+            {% endblock %}
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
             </div>
-        </div>
-     </footer>
+          </div>
+        </footer>
+    <script>
+        $(document).ready(function(){
+            $('.scrollspy').scrollSpy();
+        });
+    </script>
 </body>
 </html>

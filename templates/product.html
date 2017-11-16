@@ -13,21 +13,28 @@
 {% block content %}
 
     <div class="col s12 m7">
-    <div class="card horizontal large">
-      <div class="teal lighten-2 z-depth-1" style="width: 40%">
-                <img src="{{ product.img.url }}" style="width: 100%; height: 70%">
-{#          class="materialboxed" >#}
-            {{ product.name }}
-            {{ product.size }}
-            {{ product.price }}
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-            {% include 'order_form.html' %}
+        <div class="row">
+            <div class="col s12 m8 offset-m2">
+                <div class="card">
+                    <div class="card-image materialboxed">
+                        <img src="{{ product.img.url }}">
+                        <span class="card-title">{{ product.name }}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Velikost: {{ product.size }}
+                        </p>
+                        <p>
+                            Cena: {{ product.price }} €
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        {% include 'order_form.html' %}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
     <script>
           $(document).ready(function(){
