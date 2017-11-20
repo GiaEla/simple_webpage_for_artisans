@@ -31,12 +31,12 @@
       restart_policy: always
       tty: yes
       memory: 4g
-      ports:
-        - "80:80"
+      expose:
+        - "80"
       volumes:
         - "/home/gitlab/projekt_gia/media:/usr/src/app/media"
       env:
-        VIRTUAL_HOST: "{{ sub_domain }}{{ git_branch }}.algoritmik.si"
-        LETSENCRYPT_HOST: "{{ sub_domain }}{{ git_branch }}.algoritmik.si"
-        LETSENCRYPT_EMAIL: support@algoritmik.si
+        VIRTUAL_HOST: "projektgia.si,www.projektgia.si"
+        LETSENCRYPT_HOST: "projektgia.si,www.projektgia.si"
+        LETSENCRYPT_EMAIL: spela.giacomelli@gmail.com
         DJANGO_ENV_NAME: "{{ django_env }}"
