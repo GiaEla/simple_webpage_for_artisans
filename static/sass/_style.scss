@@ -30,12 +30,18 @@ main {
     margin: 5px;
 }
 
+
 .img_logo:hover{
     opacity: 0.60;
 }
 
+
 .img_logo_fb{
     filter: brightness(0) invert(1);
+}
+
+.img_logo_linkedin{
+    height: 50px;
 }
 
 
@@ -52,12 +58,12 @@ main {
 }
 
 .not-streched-about{
-    background-image: url("/static/img/moi.JPG");
+    background-image: url("/static/img/about.jpg");
 }
 
 .not-streched-contact{
 
-    background-image: url("/static/img/moi.JPG");
+    background-image: url("/static/img/contact.jpg");
 }
 
 .card-margin{
@@ -123,4 +129,8 @@ main {
 
 .description-p{
         text-align: right;
+}
+
+.logo{
+    font-family: 'Homemade Apple', cursive;
 }

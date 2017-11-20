@@ -2062,7 +2062,7 @@ video.responsive-video {
   display: inline-block;
   float: none; }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1200px) {
   .pagination {
     width: 100%; }
     .pagination li.prev,
@@ -2141,7 +2141,7 @@ ul.staggered-list li {
   .hide-on-small-only, .hide-on-small-and-down {
     display: none !important; } }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1200px) {
   .hide-on-med-and-down {
     display: none !important; } }
 
@@ -2149,19 +2149,19 @@ ul.staggered-list li {
   .hide-on-med-and-up {
     display: none !important; } }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
   .hide-on-med-only {
     display: none !important; } }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1201px) {
   .hide-on-large-only {
     display: none !important; } }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1201px) {
   .show-on-large {
     display: block !important; } }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
   .show-on-medium {
     display: block !important; } }
 
@@ -2173,7 +2173,7 @@ ul.staggered-list li {
   .show-on-medium-and-up {
     display: block !important; } }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1200px) {
   .show-on-medium-and-down {
     display: block !important; } }
 
@@ -2223,7 +2223,7 @@ td, th {
   vertical-align: middle;
   border-radius: 2px; }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1200px) {
   table.responsive-table {
     width: 100%;
     border-collapse: collapse;
@@ -2512,7 +2512,7 @@ nav ul a span.badge {
 @media only screen and (min-width: 601px) {
   .container {
     width: 85%; } }
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1201px) {
   .container {
     width: 70%; } }
 .container .row {
@@ -2809,7 +2809,7 @@ nav ul a span.badge {
         right: 100%; }
       .row .col.push-m12 {
         left: 100%; } }
-    @media only screen and (min-width: 993px) {
+    @media only screen and (min-width: 1201px) {
       .row .col.l1 {
         width: 8.3333333333%;
         margin-left: auto;
@@ -2942,7 +2942,7 @@ nav ul a span.badge {
         right: 100%; }
       .row .col.push-l12 {
         left: 100%; } }
-    @media only screen and (min-width: 1201px) {
+    @media only screen and (min-width: 1401px) {
       .row .col.xl1 {
         width: 8.3333333333%;
         margin-left: auto;
@@ -3102,7 +3102,7 @@ nav {
   nav .nav-wrapper {
     position: relative;
     height: 100%; }
-  @media only screen and (min-width: 993px) {
+  @media only screen and (min-width: 1201px) {
     nav a.button-collapse {
       display: none; } }
   nav .button-collapse {
@@ -3123,7 +3123,7 @@ nav {
     nav .brand-logo.center {
       left: 50%;
       transform: translateX(-50%); }
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 1200px) {
       nav .brand-logo {
         left: 50%;
         transform: translateX(-50%); }
@@ -3243,10 +3243,10 @@ html {
   @media only screen and (min-width: 0) {
     html {
       font-size: 14px; } }
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 1200px) {
     html {
       font-size: 14.5px; } }
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1400px) {
     html {
       font-size: 15px; } }
 
@@ -3307,64 +3307,64 @@ small {
   @media only screen and (min-width: 360px) {
     .flow-text {
       font-size: 1.2rem; } }
-  @media only screen and (min-width: 390px) {
+  @media only screen and (min-width: 400px) {
     .flow-text {
       font-size: 1.224rem; } }
-  @media only screen and (min-width: 420px) {
+  @media only screen and (min-width: 440px) {
     .flow-text {
       font-size: 1.248rem; } }
-  @media only screen and (min-width: 450px) {
-    .flow-text {
-      font-size: 1.272rem; } }
   @media only screen and (min-width: 480px) {
     .flow-text {
+      font-size: 1.272rem; } }
+  @media only screen and (min-width: 520px) {
+    .flow-text {
       font-size: 1.296rem; } }
-  @media only screen and (min-width: 510px) {
+  @media only screen and (min-width: 560px) {
     .flow-text {
       font-size: 1.32rem; } }
-  @media only screen and (min-width: 540px) {
-    .flow-text {
-      font-size: 1.344rem; } }
-  @media only screen and (min-width: 570px) {
-    .flow-text {
-      font-size: 1.368rem; } }
   @media only screen and (min-width: 600px) {
     .flow-text {
+      font-size: 1.344rem; } }
+  @media only screen and (min-width: 640px) {
+    .flow-text {
+      font-size: 1.368rem; } }
+  @media only screen and (min-width: 680px) {
+    .flow-text {
       font-size: 1.392rem; } }
-  @media only screen and (min-width: 630px) {
-    .flow-text {
-      font-size: 1.416rem; } }
-  @media only screen and (min-width: 660px) {
-    .flow-text {
-      font-size: 1.44rem; } }
-  @media only screen and (min-width: 690px) {
-    .flow-text {
-      font-size: 1.464rem; } }
   @media only screen and (min-width: 720px) {
     .flow-text {
-      font-size: 1.488rem; } }
-  @media only screen and (min-width: 750px) {
+      font-size: 1.416rem; } }
+  @media only screen and (min-width: 760px) {
     .flow-text {
-      font-size: 1.512rem; } }
-  @media only screen and (min-width: 780px) {
+      font-size: 1.44rem; } }
+  @media only screen and (min-width: 800px) {
     .flow-text {
-      font-size: 1.536rem; } }
-  @media only screen and (min-width: 810px) {
-    .flow-text {
-      font-size: 1.56rem; } }
+      font-size: 1.464rem; } }
   @media only screen and (min-width: 840px) {
     .flow-text {
+      font-size: 1.488rem; } }
+  @media only screen and (min-width: 880px) {
+    .flow-text {
+      font-size: 1.512rem; } }
+  @media only screen and (min-width: 920px) {
+    .flow-text {
+      font-size: 1.536rem; } }
+  @media only screen and (min-width: 960px) {
+    .flow-text {
+      font-size: 1.56rem; } }
+  @media only screen and (min-width: 1000px) {
+    .flow-text {
       font-size: 1.584rem; } }
-  @media only screen and (min-width: 870px) {
+  @media only screen and (min-width: 1040px) {
     .flow-text {
       font-size: 1.608rem; } }
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: 1080px) {
     .flow-text {
       font-size: 1.632rem; } }
-  @media only screen and (min-width: 930px) {
+  @media only screen and (min-width: 1120px) {
     .flow-text {
       font-size: 1.656rem; } }
-  @media only screen and (min-width: 960px) {
+  @media only screen and (min-width: 1160px) {
     .flow-text {
       font-size: 1.68rem; } }
   @media only screen and (max-width: 360px) {
@@ -3511,12 +3511,12 @@ small {
     #toast-container {
       min-width: 100%;
       bottom: 0%; } }
-  @media only screen and (min-width: 601px) and (max-width: 992px) {
+  @media only screen and (min-width: 601px) and (max-width: 1200px) {
     #toast-container {
       left: 5%;
       bottom: 7%;
       max-width: 90%; } }
-  @media only screen and (min-width: 993px) {
+  @media only screen and (min-width: 1201px) {
     #toast-container {
       top: 10%;
       right: 7%;
@@ -3609,7 +3609,7 @@ small {
     background-color: #c1b1ab;
     will-change: left, right; }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1200px) {
   .tabs {
     display: flex; }
     .tabs .tab {
@@ -4013,7 +4013,7 @@ button.btn-floating {
   overflow-y: auto;
   border-radius: 2px;
   will-change: top, opacity; }
-  @media only screen and (max-width: 992px) {
+  @media only screen and (max-width: 1200px) {
     .modal {
       width: 80%; } }
   .modal h1, .modal h2, .modal h3, .modal h4 {
@@ -4617,7 +4617,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
     width: calc(100% - 3rem); }
   .input-field .prefix ~ label {
     margin-left: 3rem; }
-  @media only screen and (max-width: 992px) {
+  @media only screen and (max-width: 1200px) {
     .input-field .prefix ~ input {
       width: 86%;
       width: calc(100% - 3rem); } }
@@ -5428,7 +5428,7 @@ input[type=range]:focus::-ms-fill-upper {
     right: 0;
     left: auto; }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1200px) {
   .side-nav.fixed {
     transform: translateX(-105%); }
     .side-nav.fixed.right-aligned {
@@ -6861,6 +6861,9 @@ main {
 .img_logo_fb {
   filter: brightness(0) invert(1); }
 
+.img_logo_linkedin {
+  height: 50px; }
+
 .all_logos {
   text-align: center; }
 
@@ -6872,10 +6875,10 @@ main {
   background-position: 50% 50%; }
 
 .not-streched-about {
-  background-image: url("/static/img/moi.JPG"); }
+  background-image: url("/static/img/about.jpg"); }
 
 .not-streched-contact {
-  background-image: url("/static/img/moi.JPG"); }
+  background-image: url("/static/img/contact.jpg"); }
 
 .card-margin {
   margin: 20px; }
@@ -6927,5 +6930,8 @@ main {
 
 .description-p {
   text-align: right; }
+
+.logo {
+  font-family: 'Homemade Apple', cursive; }
 
 /*# sourceMappingURL=materialize.css.map */

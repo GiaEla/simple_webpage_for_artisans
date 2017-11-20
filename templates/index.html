@@ -15,7 +15,7 @@
         <nav>
             <div class="nav-wrapper">
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="#"><i class="material-icons medium">home</i></a></li>
+                    <li class="logo"><a href="#"> Projekt Gia </a></li>
                 </ul>
                 <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
@@ -66,9 +66,9 @@
 {% block content %}
     <!-- products section -->
           <div class="row section scrollspy card-panel costum-color" id="products">
-          <h2 class="center-align section-header">IZDELKI</h2>
+          <h2 class="center-align section-header">PONUDBA</h2>
         {% for product in all_products %}
-            <div class="col s12 m4 l3">
+            <div class="col s12 m4 l4">
                 <a href="{% url 'products' pk=product.id %}">
                     <div class="card small hoverable costum-color-2">
                         <div class="card-image">
@@ -94,16 +94,19 @@
     <div class="row section scrollspy" id="about">
         <div>
             <div class="card-panel costum-color z-depth-1">
-                <div class="row valign-wrapper">
-                    <div class="col s2">
-                        <div class="circle not-streched not-streched-about">
+                <div class="row">
+                        <div class="col s12 m12 l2">
+                            <div class="circle not-streched not-streched-about">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col s10">
-                        <h2 class="center-align section-header">O MENI</h2>
+
+                    <div class="col s12 m12 l10">
+                        <h2 class="section-header">O MENI</h2>
                         <span class="flow-text">
-                    Sed tincidunt dolor vel turpis sodales lobortis. Integer cursus ante ut sapien aliquet maximus. Donec eu ultrices est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit enim vehicula metus bibendum volutpat. Phasellus risus ligula, ornare nec justo ut, vestibulum porttitor enim. Ut sagittis nibh augue, ac efficitur arcu commodo sed. Mauris ut metus orci. Donec laoreet magna hendrerit, venenatis est at, ornare elit. Donec ac nibh ultricies, viverra tortor non, porta ipsum. Nam sodales tempus elit vel ultricies. Phasellus viverra blandit velit, vel feugiat nunc facilisis in.
-                  </span>
+                            V projektu Gia sem združila dve svoji veliki ljubezni - pomoč ljudem in programiranje.
+                            Ker pripisujem lokalnim nakup velik pomen, sem želela omogočiti predstavitev na spletu tudi
+                            majhnim, lokalnim podjetnikom, ki brez spletne strani težko konkurirajo velikim korporacijam.
+                        </span>
                     </div>
                 </div>
             </div>
@@ -114,21 +117,21 @@
     <div class="row section scrollspy" id="contact">
     <div>
         <div class="card-panel costum-color z-depth-1">
-            <h2 class="center-align section-header">KONTAKT</h2>
-            <address class="row valign-wrapper">
-                <div class="col s10 offset-s2">
-                    <p>
+            <div class="row valign-wrapper">
+                <div class="col s12 m10 offset-m2">
+                    <h2 class="section-header">KONTAKT</h2>
+                    <p class="flow-text">
                         Če si želite tudi vi za stranke postati dostopnejši, nas kontaktirajte na:
                     </p>
-                    <p>
-                         spela.giacomelli@gmail.com
+                    <p class="flow-text">
+                         projekt.gia@gmail.com
                     </p>
                 </div>
-                <div class="col s2">
+                <div class="col s12 m2">
                     <div class="circle not-streched not-streched-contact">
                     </div>
                 </div>
-            </address>
+            </div>
         </div>
     </div>
 
