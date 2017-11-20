@@ -25,7 +25,7 @@ SECRET_KEY = 'pn83(h2bc!px+l2n8l-^f96v(@wiadv^cqs8f71&3fd8#5i57)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -139,6 +139,7 @@ DEFAULT_TO_EMAIL = 'spela.giacomelli@gmail.com'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
