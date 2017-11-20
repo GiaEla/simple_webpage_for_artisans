@@ -9,9 +9,9 @@
         {% endblock %}
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">#}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/materialize.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
@@ -26,16 +26,27 @@
         {% block content %}
         {% endblock %}
     </main>
+    <footer class="page-footer">
+            <div class="row">
+                <div class="col l6 s10 m6 offset-l3 offset-m3 center-align">
+                    <a target="_blank" href="https://www.instagram.com/">
+                          <img src="{% static "img/instagram-icon.png" %}" class="img_logo">
+                      </a>
+                      <a target="_blank" href="https://www.facebook.com/spela.lavric.7">
+                          <img src="{% static "img/real_facebook.ico" %}" class="img_logo img_logo_fb">
+                      </a>
+                      <a target="_blank" href="https://github.com/GiaEla">
+                          <img src="{% static "img/github.svg" %}" class="img_logo img_logo_fb">
+                      </a>
 
-        <footer class="page-footer">
-            {% block footer %}
-            {% endblock %}
-          <div class="footer-copyright">
-            <div class="container">
-            © 2017 Giacomelli
+                </div>
+                    <p>
+                        © 2017 Giacomelli
+                    </p>
+                </div>
             </div>
-          </div>
-        </footer>
+    </footer>
+
     <script>
         $(document).ready(function(){
             $('.scrollspy').scrollSpy();

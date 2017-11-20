@@ -11,18 +11,27 @@
 
 
 {% block header %}
-        <div class="navbar-fixed">
+    <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="/" class="brand-logo">Logo</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#products">Izdelki</a></li>
-                    <li><a href="#about">O meni</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="/"><i class="material-icons medium">home</i></a></li>
+                </ul>
+                <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#products">IZDELKI</a></li>
+                    <li><a href="#about">O MENI</a></li>
+                    <li><a href="#contact">KONTAKT</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile">
+                    <li><a href="#products">IZDELKI</a></li>
+                    <li><a href="#about">O MENI</a></li>
+                    <li><a href="#contact">KONTAKT</a></li>
                 </ul>
             </div>
         </nav>
     </div>
+
     <div class="wrap">
         <div class="slider" id="home">
             <ul class="slides">
@@ -30,7 +39,7 @@
                     <li>
                         <img src="{{ product.img.url }}">
                         <div class="caption center-align">
-                            <h2>{{ product.name }}</h2>
+                            <h1 id="caption-text">{{ product.name | upper }}</h1>
                         </div>
                     </li>
                 {% endfor %}
@@ -39,6 +48,8 @@
     </div>
     <script>
         $(document).ready(function(){
+            $(".button-collapse").sideNav();
+
             $('.slider').slider(
                 {
                     interval: 3000
@@ -54,24 +65,26 @@
 
 {% block content %}
     <!-- products section -->
-    <div class="row section scrollspy" id="products">
+          <div class="row section scrollspy card-panel costum-color" id="products">
+          <h2 class="center-align section-header">IZDELKI</h2>
         {% for product in all_products %}
             <div class="col s12 m4 l3">
-            <a href="{% url 'products' pk=product.id %}">
-                <div class="card small hoverable">
-                    <div class="card-image">
-                        <img class="" src="{{ product.img.url }}">
-                        <span class="card-title">{{ product.name }}</span>
+                <a href="{% url 'products' pk=product.id %}">
+                    <div class="card small hoverable costum-color-2">
+                        <div class="card-image">
+                            <img class="" src="{{ product.img.url }}">
+                            <span class="card-title">{{ product.name | upper }}</span>
+                        </div>
+                        <div class="card-content">
+                            {% if product.size != null %}
+                                <p>Velikost: {{ product.size }}</p>
+                            {% endif %}
+                            <p>Cena: {{ product.price }} €</p>
+                        </div>
+                        <div class="card-action right-align">
+                            <div class="waves-effect waves-light btn">Naroči</div>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        Velikost: {{ product.size }} <br>
-                        Cena: {{ product.price }}
-                    </div>
-                    <div class="card-action">
-                        Naroči
-                    </div>
-
-                </div>
                 </a>
             </div>
         {% endfor %}
@@ -79,47 +92,48 @@
 
     <!-- about me section -->
     <div class="row section scrollspy" id="about">
-    <div>
-        <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row valign-wrapper">
-                <div class="col s2">
-                    <div class="circle not-streched">
+        <div>
+            <div class="card-panel costum-color z-depth-1">
+                <div class="row valign-wrapper">
+                    <div class="col s2">
+                        <div class="circle not-streched not-streched-about">
+                        </div>
                     </div>
-                </div>
-                <div class="col s10">
-                  <span class="black-text">
+                    <div class="col s10">
+                        <h2 class="center-align section-header">O MENI</h2>
+                        <span class="flow-text">
                     Sed tincidunt dolor vel turpis sodales lobortis. Integer cursus ante ut sapien aliquet maximus. Donec eu ultrices est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit enim vehicula metus bibendum volutpat. Phasellus risus ligula, ornare nec justo ut, vestibulum porttitor enim. Ut sagittis nibh augue, ac efficitur arcu commodo sed. Mauris ut metus orci. Donec laoreet magna hendrerit, venenatis est at, ornare elit. Donec ac nibh ultricies, viverra tortor non, porta ipsum. Nam sodales tempus elit vel ultricies. Phasellus viverra blandit velit, vel feugiat nunc facilisis in.
                     Quisque eget neque a dui mattis pellentesque. Donec eu lacinia mauris. Sed mattis risus et imperdiet ultricies. Sed enim tortor, tincidunt quis magna ut, lacinia volutpat nulla. Donec vitae augue erat. Nullam congue quis sem id consectetur. Phasellus vitae iaculis ipsum, id egestas libero. Donec dignissim nec nibh nec imperdiet. Nulla ut nisi diam.
                     Nam non vulputate quam. Pellentesque ac molestie est. Curabitur congue id lacus at feugiat. In gravida dolor lorem, non efficitur ipsum dignissim sit amet. Pellentesque cursus augue erat, nec pretium massa convallis nec. Nullam hendrerit felis sem, sed tempor sem cursus et. Donec ultrices bibendum tempus. Donec sollicitudin porttitor dolor, tempus sodales felis aliquam nec. Suspendisse pretium, turpis quis efficitur ornare, nunc elit scelerisque justo, id vestibulum dui sem at ligula.
                   </span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-{% endblock %}
-
-{% block footer %}
-    <div class="container">
-        <div class="row scrollspy" id="contact">
-            <div class="col l6 m6 s10 offset-s1">
-                <h5 class="white-text">Kontakt</h5>
-                <ul>
-                    <li> Email: spela.giacomelli@gmail.com </li>
-                    <li> Naslov: Kaj te briga, 1000 Ljubljana </li>
-                </ul>
-            </div>
-            <div class="col l4 offset-l2 m5 offset-m1 s10 offset-s1 all_logos" >
-                <a target="_blank" href="https://www.instagram.com/">
-                    <img src="{% static "img/instagram-icon.png" %}" class="img_logo">
-                </a>
-                <a target="_blank" href="https://www.facebook.com/spela.lavric.7">
-                    <img src="{% static "img/real_facebook.ico" %}" class="img_logo img_logo_fb">
-                </a>
-                <a target="_blank" href="https://github.com/GiaEla">
-                    <img src="{% static "img/github.svg" %}" class="img_logo img_logo_fb">
-                </a>
-            </div>
+    <!-- contact section -->
+    <div class="row section scrollspy" id="about">
+    <div>
+        <div class="card-panel costum-color z-depth-1">
+            <h2 class="center-align section-header">KONTAKT</h2>
+            <address class="row valign-wrapper">
+                <div class="col s10 offset-s2">
+                    <p>
+                        Če si želite tudi vi za stranke postati dostopnejši, nas kontaktirajte na:
+                    </p>
+                    <p>
+                         spela.giacomelli@gmail.com
+                    </p>
+                </div>
+                <div class="col s2">
+                    <div class="circle not-streched not-streched-contact">
+                    </div>
+                </div>
+            </address>
         </div>
     </div>
+
+
+
 {% endblock %}
