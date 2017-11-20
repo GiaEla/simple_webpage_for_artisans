@@ -1,7 +1,9 @@
 import datetime
 
-from django.core.mail import EmailMessage
+from django.conf import settings
+from django.core.mail import EmailMessage, EmailMultiAlternatives
 from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 from orders.models import Order, Product
 
@@ -21,16 +23,14 @@ def create_order(form, product_pk):
 
 def send_email(order):
 
-    subject = 'Naročilo izdelka ' + order.product_fk.name
+    subject = 'Naročilo ' + order.product_fk.name
+    from_email = settings.DEFAULT_FROM_EMAIL
+    to = [order.recipient_email]
+
     message = render_to_string('order_confirmation.html')
-    recipient_email = order.recipient_email
+    text_message = strip_tags(message)
 
-    email = EmailMessage(
-        subject,
-        message,
-        'giacotesting@gmail.com',
-        [recipient_email],
-    )
+    mail = EmailMultiAlternatives(subject, text_message, to=to, from_email=from_email)
+    mail.attach_alternative(message, "text/html")
 
-    email.content_subtype = 'html'
-    email.send()
+    mail.send()
