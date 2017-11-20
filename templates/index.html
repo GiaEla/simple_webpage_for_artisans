@@ -15,7 +15,7 @@
         <nav>
             <div class="nav-wrapper">
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="/"><i class="material-icons medium">home</i></a></li>
+                    <li><a href="#"><i class="material-icons medium">home</i></a></li>
                 </ul>
                 <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
@@ -38,7 +38,7 @@
                 {% for product in last_products %}
                     <li>
                         <img src="{{ product.img.url }}">
-                        <div class="caption center-align">
+                        <div class="caption left-align">
                             <h1 id="caption-text">{{ product.name | upper }}</h1>
                         </div>
                     </li>
@@ -52,7 +52,7 @@
 
             $('.slider').slider(
                 {
-                    interval: 3000
+                    interval: 5000
                 }
             );
 
@@ -113,7 +113,7 @@
     </div>
 
     <!-- contact section -->
-    <div class="row section scrollspy" id="about">
+    <div class="row section scrollspy" id="contact">
     <div>
         <div class="card-panel costum-color z-depth-1">
             <h2 class="center-align section-header">KONTAKT</h2>

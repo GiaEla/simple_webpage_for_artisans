@@ -18,14 +18,13 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from orders.views import index, products, success, full_img
+from orders.views import index, products, success
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
     url(r'^product/(?P<pk>\d+)/$', products, name="products"),
     url(r'^success/$', success, name="success"),
-    url(r'^full-img/(?P<pk>\d+)/$', full_img, name="full-img"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

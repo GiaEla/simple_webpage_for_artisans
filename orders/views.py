@@ -31,7 +31,3 @@ def products(request, pk):
         form = OrderForm()
         return render(request, 'product.html', {'product': product, 'form': form})
 
-
-def full_img(request, pk):
-    product = Product.objects.get(pk=pk)
-    return render(request, 'full_img.html', {'product': product})

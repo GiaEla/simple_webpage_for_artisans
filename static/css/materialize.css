@@ -6921,4 +6921,11 @@ main {
   color: #76323F;
   font-weight: bolder; }
 
+.product-description {
+  color: #76323F;
+  font-weight: bolder; }
+
+.description-p {
+  text-align: right; }
+
 /*# sourceMappingURL=materialize.css.map */
