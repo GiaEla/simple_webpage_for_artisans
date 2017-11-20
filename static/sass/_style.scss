@@ -36,14 +36,9 @@ main {
 }
 
 
-.img_logo_fb{
+.img_logo_white{
     filter: brightness(0) invert(1);
 }
-
-.img_logo_linkedin{
-    height: 50px;
-}
-
 
 .all_logos{
     text-align: center;
@@ -58,7 +53,7 @@ main {
 }
 
 .not-streched-about{
-    background-image: url("/static/img/about.jpg");
+    background-image: url("/static/img/jaz.jpg");
 }
 
 .not-streched-contact{

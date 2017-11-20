@@ -6858,11 +6858,8 @@ main {
 .img_logo:hover {
   opacity: 0.60; }
 
-.img_logo_fb {
+.img_logo_white {
   filter: brightness(0) invert(1); }
-
-.img_logo_linkedin {
-  height: 50px; }
 
 .all_logos {
   text-align: center; }
@@ -6875,7 +6872,7 @@ main {
   background-position: 50% 50%; }
 
 .not-streched-about {
-  background-image: url("/static/img/about.jpg"); }
+  background-image: url("/static/img/jaz.jpg"); }
 
 .not-streched-contact {
   background-image: url("/static/img/contact.jpg"); }
