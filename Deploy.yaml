@@ -1,0 +1,40 @@
+---
+- hosts: "{{ HOSTS|default('spela') }}"
+  remote_user: gitlab
+  vars:
+    version: "{{ CI_COMMIT_REF_NAME }}"
+    sub_domain: "{{ SUB_DOMAIN_REST|default('projektgia') }}"
+    git_branch: "{{ GIT_BRANCH|default('dev') }}"
+    django_env: "{{ DJANGO_ENV_NAME|default('dev') }}"
+    docker_registry: "{{ CI_REGISTRY_IMAGE }}"
+    docker_password: "{{ CI_JOB_TOKEN }}"
+    docker_img: "{{ CI_REGISTRY_IMAGE }}"
+  tasks:
+  - name: Log into Docker registry
+    docker_login:
+      registry_url: registry.gitlab.com
+      username: gitlab-ci-token
+      password: "{{ docker_password }}"
+
+  - name: Pull image
+    docker_image:
+      name: "{{ docker_img }}"
+      nocache: yes
+      state: present
+
+  - name: Start image
+    docker_container:
+      name: gia
+      image: "{{ docker_img }}"
+      state: started
+      restart: yes
+      restart_policy: always
+      tty: yes
+      memory: 4g
+      ports:
+        - "80:80"
+      env:
+        VIRTUAL_HOST: "{{ sub_domain }}{{ git_branch }}.algoritmik.si"
+        LETSENCRYPT_HOST: "{{ sub_domain }}{{ git_branch }}.algoritmik.si"
+        LETSENCRYPT_EMAIL: support@algoritmik.si
+        DJANGO_ENV_NAME: "{{ django_env }}"

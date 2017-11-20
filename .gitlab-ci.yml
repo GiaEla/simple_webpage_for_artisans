@@ -1,0 +1,57 @@
+stages:
+- build
+- deploy
+
+variables:
+  IMAGE_TAG: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHA
+  DOCKER_DRIVER: overlay2
+
+build:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: build
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+    - apk update && apk add tar
+    - tar -czf dist.tar.gz `ls -A`
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
+
+  only:
+    - master
+
+production:
+  environment: prod
+  image: williamyeh/ansible:ubuntu16.04
+  stage: deploy
+  before_script:
+    # Install ssh-agent if not already installed, it is required by Docker.
+    # (change apt-get to yum if you use a CentOS-based image)
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+
+    # Run ssh-agent (inside the build environment)
+    - eval $(ssh-agent -s)
+
+    # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+    - ssh-add <(echo "$PROD_KEY")
+
+    # For Docker builds disable host key checking. Be aware that by adding that
+    # you are suspectible to man-in-the-middle attacks.
+    # WARNING: Use this only with the Docker executor, if you use it with shell
+    # you will overwrite your user's SSH config.
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    # In order to properly check the server's host key, assuming you created the
+    # SSH_SERVER_HOSTKEYS variable previously, uncomment the following two lines
+    # instead.
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo "$SSH_PROD_SERVER_HOSTKEYS" > ~/.ssh/known_hosts'
+
+  script:
+  - ansible-playbook -i hosts Deploy.yaml -e GIT_BRANCH=$CI_COMMIT_REF_NAME -e DJANGO_ENV_NAME=$CI_COMMIT_REF_NAME -e CI_JOB_TOKEN=$CI_JOB_TOKEN -e CI_REGISTRY_IMAGE=$IMAGE_TAG
+
+  only:
+  - master
+
