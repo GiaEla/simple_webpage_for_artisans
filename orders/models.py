@@ -1,7 +1,5 @@
 from django.db import models
 from django.utils.safestring import mark_safe
-from easy_thumbnails.fields import ThumbnailerImageField
-from easy_thumbnails.files import get_thumbnailer
 
 from moneytalks import settings
 
@@ -9,7 +7,6 @@ from moneytalks import settings
 class Product(models.Model):
     name = models.CharField('Ime izdelka', max_length=40)
     img = models.ImageField('Fotografija')
-    thumb = ThumbnailerImageField(upload_to='thumbnails',  blank=True)
     size = models.CharField('Velikost/količina', max_length=20, null=True, blank=True)
     price = models.DecimalField('Cena v €',  max_digits=8, decimal_places=2)
     sold = models.BooleanField('Prodano', default=False)
@@ -27,13 +24,6 @@ class Product(models.Model):
 
     def __str__(self):
         return '%s' % (self.name)
-
-    def save(self, *args, **kwargs):
-        thumb = get_thumbnailer(self.img)
-        thumbnail_options = {'crop': "smart"}
-        self.thumb = thumb.get_thumbnail(thumbnail_options)
-
-        super(Product, self).save(*args, **kwargs)
 
 
 class Order(models.Model):

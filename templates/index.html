@@ -38,7 +38,7 @@
             <ul class="slides">
                 {% for product in last_products %}
                     <li>
-                        <img src="{{ product.thumb.avatar.url }}">
+                        <img src="{{ product.img.url }}">
                         <div class="caption left-align">
                             <h1 id="caption-text">{{ product.name | upper }}</h1>
                         </div>
@@ -76,7 +76,7 @@
                 <a href="{% url 'products' pk=product.id %}">
                     <div class="card small hoverable costum-color-2">
                         <div class="card-image">
-                            <img class="" src="{{ product.img.url }}">
+                            <img class="" src="{% thumbnail product.img 250x250 crop %}">
                             <span class="card-title">{{ product.name | upper }}</span>
                         </div>
                         <div class="card-content">
