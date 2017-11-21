@@ -16,7 +16,7 @@ class ProductModelForm(forms.ModelForm):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('fotografija', 'name', 'size', 'price', 'sold')
-    form = ProductModelForm
+    # form = ProductModelForm
 
 
 class OrderAdmin(admin.ModelAdmin):

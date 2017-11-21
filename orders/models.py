@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils.safestring import mark_safe
 
@@ -10,7 +11,7 @@ class Product(models.Model):
     size = models.CharField('Velikost/količina', max_length=20, null=True, blank=True)
     price = models.DecimalField('Cena v €',  max_digits=8, decimal_places=2)
     sold = models.BooleanField('Prodano', default=False)
-    description = models.CharField('Opis izdelka', max_length=250, null=True, blank=True)
+    description = RichTextField(null=True, blank=True)# models.CharField('Opis izdelka', max_length=250, null=True, blank=True)
     short_description = models.CharField('Opis izdelka', max_length=50, null=True, blank=True)
 
     def fotografija(self):

@@ -45,9 +45,10 @@
                             <ul class="collapsible" data-collapsible="accordion">
                                 <li>
                                     <div class="collapsible-header costum-color product-description">
-                                        <p class="description-p"> OPIS </p>
+                                        <i class="material-icons">keyboard_arrow_down</i>
+                                        OPIS
                                     </div>
-                                    <div class="collapsible-body"><span>{{ product.description }}</span></div>
+                                    <div class="collapsible-body"><span>{{ product.description|safe }}</span></div>
                                 </li>
                             </ul>
                             {#                            <div id="description" class="col m12 center-align truncate"> {{ product.description }}</div>#}
