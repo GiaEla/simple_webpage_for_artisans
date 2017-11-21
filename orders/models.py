@@ -11,6 +11,7 @@ class Product(models.Model):
     price = models.DecimalField('Cena v €',  max_digits=8, decimal_places=2)
     sold = models.BooleanField('Prodano', default=False)
     description = models.CharField('Opis izdelka', max_length=250, null=True, blank=True)
+    short_description = models.CharField('Opis izdelka', max_length=50, null=True, blank=True)
 
     def fotografija(self):
         return mark_safe('<img src="{0}" style="width:auto; height:200px;" />'.format(settings.MEDIA_URL + str(self.img)))

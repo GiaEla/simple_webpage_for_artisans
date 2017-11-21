@@ -3,15 +3,19 @@ from django.shortcuts import render, get_object_or_404, redirect
 # Create your views here.
 from orders.forms import OrderForm
 from orders.models import Product, Order
+from sections.models import Section
 from utils.costumers import create_order, send_email
+
 
 def success(request):
     return render(request, 'success.html')
 
+
 def index(request):
     last_products = Product.objects.all().order_by('-id')[:3]
     all_products = Product.objects.all()
-    return render(request, 'index.html', {'last_products': last_products, 'all_products': all_products})
+    sections = Section.objects.all()
+    return render(request, 'index.html', {'last_products': last_products, 'all_products': all_products, 'sections': sections})
 
 
 def products(request, pk):

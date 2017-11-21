@@ -6888,6 +6888,13 @@ main {
   margin-top: 25px;
   float: right; }
 
+.product-img {
+  width: 100%;
+  min-height: 40vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%; }
+
 .brand-logo {
   margin-left: 50px; }
 
@@ -6920,5 +6927,8 @@ main {
 
 .logo {
   font-family: 'Homemade Apple', cursive; }
+
+.section {
+  margin-bottom: 50px; }
 
 /*# sourceMappingURL=materialize.css.map */

@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'easy_thumbnails',
     'orders',
-    'users'
+    'users',
+    'sections',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [

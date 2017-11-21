@@ -20,17 +20,19 @@
                 </ul>
                 <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#products">IZDELKI</a></li>
-                    <li><a href="#about">O MENI</a></li>
-                    <li><a href="#contact">KONTAKT</a></li>
+                    <li><a href="#products">PONUDBA</a></li>
+                    {% for section in sections %}
+                        <li><a href="#{{ section.html_id }}">{{ section.title|upper }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </nav>
     </div>
     <ul class="side-nav" id="mobile">
-        <li><a href="#products">IZDELKI</a></li>
-        <li><a href="#about">O MENI</a></li>
-        <li><a href="#contact">KONTAKT</a></li>
+    <li><a href="#products">PONUDBA</a></li>
+        {% for section in sections %}
+            <li><a href="#{{ section.html_id }}">{{ section.title|upper }}</a></li>
+        {% endfor %}
     </ul>
 
     <div class="wrap">
@@ -83,7 +85,10 @@
                             {% if product.size != null %}
                                 <p>Velikost: {{ product.size }}</p>
                             {% endif %}
-                            <p>Cena: {{ product.price }} €</p>
+                            <p>Cena: od {{ product.price }} €</p>
+                            {% if product.short_description != null %}
+                                <p>{{ product.short_description }}</p>
+                            {% endif %}
                         </div>
                         <div class="card-action right-align">
                             <div class="waves-effect waves-light btn">Naroči</div>
@@ -95,53 +100,16 @@
     </div>
 
     <!-- about me section -->
-    <div class="row section scrollspy" id="about">
-
-        <div class="row">
-            <div class="col s12">
-                <div class="card-panel costum-color z-depth-1">
-                    <div class="row valign-wrapper">
-                        <div class="col l2 hide-on-med-and-down">
-                            <img src="{% static "img/jaz.jpg" %}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12 l10">
-                            <h2 class="section-header">O MENI</h2>
-                            <span class="flow-text align-left">
-                      Kot socialna delavka želim pomagati. Kot programerka želim razvijati spletne aplikacije.
-                    Kot mama želim imeti dostop do čimveč lokalnih izdelkov in pridelkov.
-                    Te tri želje so se združile v Projekt Gia, katerega namen je omogočiti predstavitev
-                    na spletu tudi malim, lokalnim podjetjem ter povečati njihovo konkurenčnost na trgu.
-                    #kupujlokalno namreč ne pomaga, če se te na spletu ne da najti.
-                  </span>
-                        </div>
-                    </div>
-                </div>
+    {%  for section in sections %}
+        <div class="row section scrollspy card-panel costum-color valign-wrapper" id="{{ section.html_id }}">
+            <div class="col l2 hide-on-med-and-down">
+                <img src="{% thumbnail section.img 150x150 crop %}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s12 m10">
+                <h2 class="section-header">{{ section.title|upper }}</h2>
+                <span class="flow-text align-left">{{ section.content }}</span>
             </div>
         </div>
-    </div>
-
-    <!-- contact section -->
-    <div class="row section scrollspy" id="contact">
-        <div>
-            <div class="card-panel costum-color z-depth-1">
-                <div class="row valign-wrapper">
-                    <div class="col s12 m10 offset-m2">
-                        <h2 class="section-header">KONTAKT</h2>
-                        <p class="flow-text">
-                            Če si želite tudi vi za stranke postati dostopnejši,
-                            lahko svojo spletno stran naročite preko obrazca ali pa me kontaktirate na:
-                        </p>
-                        <p class="flow-text">
-                            projekt.gia@gmail.com
-                        </p>
-                    </div>
-
-                    <div class="col l2 hide-on-med-and-down">
-                        <img src="{% static "img/contacts.jpg" %}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 
 {% endblock %}
