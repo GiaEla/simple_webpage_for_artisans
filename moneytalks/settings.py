@@ -134,7 +134,7 @@ EMAIL_HOST_USER = 'projekt.gia@gmail.com'
 
 EMAIL_HOST_PASSWORD = 'Test123!'
 
-DEFAULT_FROM_EMAIL = 'projekt.gia@gmail.com'
+DEFAULT_FROM_EMAIL = 'Špela iz Projekta Gia <projekt.gia@gmail.com>'
 
 DEFAULT_TO_EMAIL = 'projekt.gia@gmail.com'
 
