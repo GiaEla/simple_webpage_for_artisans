@@ -85,10 +85,14 @@
                             {% if product.size != null %}
                                 <p>Velikost: {{ product.size }}</p>
                             {% endif %}
-                            <p>Cena: od {{ product.price }} €</p>
                             {% if product.short_description != null %}
                                 <p>{{ product.short_description }}</p>
                             {% endif %}
+                            <p><strong>od {{ product.price }}€</strong>
+                                {% if product.month_price != null %}
+                                   + {{ product.month_price }}€/mesec
+                                {% endif %}
+                            </p>
                         </div>
                         <div class="card-action right-align">
                             <div class="waves-effect waves-light btn">Naroči</div>
@@ -107,7 +111,7 @@
             </div>
             <div class="col s12 m10">
                 <h2 class="section-header">{{ section.title|upper }}</h2>
-                <span class="flow-text align-left">{{ section.content }}</span>
+                <span class="flow-text align-left">{{ section.content|safe }}</span>
             </div>
         </div>
     {% endfor %}

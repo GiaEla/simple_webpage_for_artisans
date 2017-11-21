@@ -1,10 +1,11 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 
 
 class Section(models.Model):
     title = models.CharField('Naslov', max_length=25)
     img = models.ImageField('Fotografija')
-    content = models.CharField('Vsebina', max_length=10000, null=True, blank=True)
+    content = RichTextField('Vsebina', max_length=10000, null=True, blank=True)
     html_id = models.CharField('Navigacija za Html', max_length=40, default='html_id')
 
     class Meta:

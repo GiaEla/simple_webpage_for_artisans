@@ -29,16 +29,19 @@
                         <a class="modal-trigger" href="#modal-image">
                             <div class="product-img" style="background-image: url('{{ product.img.url }}');"></div>
                         </a>
-                        <span class="card-title">{{ product.name }}</span>
+                        <span class="card-title">{{ product.name|upper }}</span>
                     </div>
 
                     <div class="card-content">
                         <div class="row">
+                            <div class="col s12 m6 product-data">
+                                od {{ product.price }}€
+                                {% if product.month_price != null %}
+                                    + {{ product.month_price }}€/mesec
+                                {% endif %}
+                            </div>
                             {% if product.size != null %}
-                                <div class="col m3 product-data">Velikost: {{ product.size }}</div>
-                                <div class="col m3 product-data offset-m6">Cena: {{ product.price }} € </div>
-                            {% else %}
-                                <div class="col m12 product-data center-align">Cena: {{ product.price }} € </div>
+                                <div class="col s12 m6 product-data">Velikost: {{ product.size }}</div>
                             {% endif %}
                         </div>
                         {% if product.description !=  null %}

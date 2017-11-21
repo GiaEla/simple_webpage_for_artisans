@@ -6928,8 +6928,10 @@ main {
 .logo {
   font-family: 'Homemade Apple', cursive; }
 
-.section {
-  margin-bottom: 50px; }
+.section li {
+  margin-bottom: 50px;
+  list-style-type: disc !important;
+  margin-left: 30px; }
 
 .collapsible-body li {
   list-style-type: disc !important;
