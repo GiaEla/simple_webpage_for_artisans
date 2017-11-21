@@ -5,9 +5,8 @@ from django.contrib import admin
 from orders.models import Product, Order
 
 
-class ProductModelForm(forms.ModelForm):
-    description = forms.CharField(label='Opis', widget=forms.Textarea)
-    short_description = forms.CharField(label='Kratek opis(max 50 znakov)', widget=forms.Textarea)
+class OrderModelForm(forms.ModelForm):
+    comment = forms.CharField(label='Opombe', widget=forms.Textarea)
 
     class Meta:
         model = Product
@@ -16,11 +15,11 @@ class ProductModelForm(forms.ModelForm):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('fotografija', 'name', 'size', 'price', 'sold')
-    # form = ProductModelForm
 
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('izdelek', 'recipient_email', 'date', 'status')
+    form = OrderModelForm
 
 
 admin.site.register(Product, ProductAdmin)
