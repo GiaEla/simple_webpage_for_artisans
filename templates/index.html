@@ -3,6 +3,7 @@
 
 {% extends "base.html" %}
 {% load static %}
+{% load thumbnail %}
 
 {% block title %}
     Projekt Gia
@@ -23,21 +24,21 @@
                     <li><a href="#about">O MENI</a></li>
                     <li><a href="#contact">KONTAKT</a></li>
                 </ul>
-                <ul class="side-nav" id="mobile">
+            </div>
+        </nav>
+    </div>
+    <ul class="side-nav" id="mobile">
                     <li><a href="#products">IZDELKI</a></li>
                     <li><a href="#about">O MENI</a></li>
                     <li><a href="#contact">KONTAKT</a></li>
                 </ul>
-            </div>
-        </nav>
-    </div>
 
     <div class="wrap">
         <div class="slider" id="home">
             <ul class="slides">
                 {% for product in last_products %}
                     <li>
-                        <img src="{{ product.img.url }}">
+                        <img src="{{ product.thumb.avatar.url }}">
                         <div class="caption left-align">
                             <h1 id="caption-text">{{ product.name | upper }}</h1>
                         </div>
@@ -48,7 +49,10 @@
     </div>
     <script>
         $(document).ready(function(){
-            $(".button-collapse").sideNav();
+            $(".button-collapse").sideNav({
+                closeOnClick: true,
+                draggable: true
+            });
 
             $('.slider').slider(
                 {

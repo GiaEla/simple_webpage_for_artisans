@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'easy_thumbnails',
     'orders',
     'users'
 ]
@@ -127,13 +128,13 @@ EMAIL_HOST = 'smtp.gmail.com'
 
 EMAIL_PORT = 587
 
-EMAIL_HOST_USER = 'giacotesting@gmail.com'
+EMAIL_HOST_USER = 'projekt.gia@gmail.com'
 
 EMAIL_HOST_PASSWORD = 'Test123!'
 
-DEFAULT_FROM_EMAIL = 'giacotesting@gmail.com'
+DEFAULT_FROM_EMAIL = 'projekt.gia@gmail.com'
 
-DEFAULT_TO_EMAIL = 'spela.giacomelli@gmail.com'
+DEFAULT_TO_EMAIL = 'projekt.gia@gmail.com'
 
 
 STATIC_URL = '/static/'
