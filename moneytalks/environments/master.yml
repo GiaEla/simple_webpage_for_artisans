@@ -1,0 +1,12 @@
+misc:
+  debug: true
+  allowed_hosts: '*'
+  secret_key: '-ocbw1=i(^hx^w2(l^c2s7xz$0n8ksxe@adiyvwde6@$_5mv%+'
+  log_to_file: true
+
+database:
+  dbname: gia
+  user: gia
+  password: XPfEb6FFfeww3uwHCSw3L
+  host: giapostgres
+  port: 5432

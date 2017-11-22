@@ -1,0 +1,13 @@
+misc:
+  debug: true
+  allowed_hosts: '*'
+  secret_key: '-ocbw1=i(^hx^w2(l^c2s7xz$0n8ksxe@adiyvwde6@$_5mv%+'
+  env_name: 'dev'
+  log_to_file: false
+
+database:
+  dbname: gia
+  user: gia
+  password: XPfEb6FFfeww3uwHCSw3L
+  host: localhost
+  port: 5432

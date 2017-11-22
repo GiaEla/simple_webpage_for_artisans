@@ -13,19 +13,22 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from moneytalks.environments.config import load_config
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+CONFIG = load_config(os.path.join(BASE_DIR, 'gubanc', 'environments'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pn83(h2bc!px+l2n8l-^f96v(@wiadv^cqs8f71&3fd8#5i57)'
+SECRET_KEY = CONFIG['misc']['secret_key']
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# SECURITY WARNING: don't full with debug turned on in production!
+DEBUG = CONFIG['misc']['debug']
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = CONFIG['misc']['allowed_hosts']
 
 
 # Application definition
@@ -82,8 +85,12 @@ WSGI_APPLICATION = 'moneytalks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': CONFIG['database']['dbname'],
+        'USER': CONFIG['database']['user'],
+        'PASSWORD': CONFIG['database']['password'],
+        'HOST': CONFIG['database']['host'],
+        'PORT': CONFIG['database']['port'],
     }
 }
 
@@ -148,3 +155,82 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 MEDIA_URL = "/media/"
 
+
+if CONFIG['misc']['log_to_file']:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters' : {
+            'standard': {
+                'format': '%(asctime)s %(levelname)s %(name)s %(message)s'
+            },
+        },
+        'handlers': {
+            'default': {
+                'level': 'DEBUG',
+                'class': 'logging.handlers.RotatingFileHandler',
+                'filename': 'logs/debug.log',
+                'maxBytes': 1024*1024*10,  # 5 MB
+                'backupCount': 5,
+                'formatter': 'standard',
+            },
+            'request_handler': {
+                    'level': 'DEBUG',
+                    'class': 'logging.handlers.RotatingFileHandler',
+                    'filename': 'logs/django_request.log',
+                    'maxBytes': 1024*1024*5,  # 5 MB
+                    'backupCount': 5,
+                    'formatter': 'standard',
+            },
+        },
+        'loggers': {
+
+            '': {
+                'handlers': ['default'],
+                'level': 'DEBUG',
+                'propagate': True
+            },
+            'django.request': {  # Stop SQL debug from logging to main logger
+                'handlers': ['request_handler'],
+                'level': 'DEBUG',
+                'propagate': False
+            },
+        }
+    }
+
+else:
+
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'standard': {
+                'format': '%(asctime)s %(levelname)s %(name)s %(message)s'
+            },
+        },
+        'handlers': {
+            'default': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+                'formatter': 'standard',
+            },
+            'request_handler': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+                'formatter': 'standard',
+            },
+        },
+        'loggers': {
+
+            '': {
+                'handlers': ['default'],
+                'level': 'DEBUG',
+                'propagate': True
+            },
+            'django.request': {  # Stop SQL debug from logging to main logger
+                'handlers': ['request_handler'],
+                'level': 'DEBUG',
+                'propagate': False
+            },
+        }
+    }
