@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'orders',
     'users',
     'sections',
-    'ckeditor'
+    'ckeditor',
+    'blog'
+
 ]
 
 MIDDLEWARE = [
@@ -234,3 +236,5 @@ else:
             },
         }
     }
+
+POSTS_PER_PAGE = 1
