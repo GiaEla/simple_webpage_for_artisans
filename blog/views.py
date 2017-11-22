@@ -87,25 +87,9 @@ def search(request):
                 )
 
                 post_list = post_list.union(new_list, post_list_tags)
-
-        paginator = Paginator(post_list, settings.POSTS_PER_PAGE)
-
-        page = request.GET.get('page')
-        try:
-            posts = paginator.page(page)
-        except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
-            posts = paginator.page(1)
-        except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
-            posts = paginator.page(paginator.num_pages)
-
-        page_numbers = [i + 1 for i in range(posts.paginator.count)]
-
     else:
-        posts = []
-        page_numbers = []
+        post_list = []
 
-    return render(request, 'blog/search.html', {'posts': posts, 'page_numbers': page_numbers})
+    return render(request, 'blog/search.html', {'posts': post_list})
 
 
